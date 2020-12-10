@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">TraCo-19</string>
+    <string name="tracotext">TraCo-19</string>
+    <string name="logintext">Login</string>
 </resources>
