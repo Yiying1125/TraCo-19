@@ -6,6 +6,28 @@
     android:layout_height="match_parent"
     android:background="#562AA6">
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/recoverednumber"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="#11DC1B"
+        app:layout_constraintBottom_toTopOf="@+id/protectionicon"
+        app:layout_constraintEnd_toStartOf="@+id/todaynumber"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recovered" >
+
+        <TextView
+            android:id="@+id/recovernumber1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="66236"
+            android:textColor="#FBFAFA"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+    </androidx.cardview.widget.CardView>
+
     <ImageView
         android:id="@+id/protectionicon"
         android:layout_width="438dp"
@@ -48,8 +70,6 @@
         android:layout_marginStart="44dp"
         android:layout_marginLeft="44dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:background="#FDF1F1"
         android:gravity="center"
         android:text="Total"
@@ -78,17 +98,15 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/totalcase"
-        app:layout_constraintEnd_toStartOf="@+id/yesterdaycase"
+        app:layout_constraintEnd_toStartOf="@+id/deathcase"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/totalcase"
         app:layout_constraintTop_toTopOf="@+id/totalcase" />
 
     <TextView
-        android:id="@+id/yesterdaycase"
+        android:id="@+id/deathcase"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
         android:layout_marginEnd="44dp"
         android:layout_marginRight="44dp"
         android:background="#FDF1F1"
@@ -106,25 +124,25 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/totalnumber"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
         android:layout_marginBottom="116dp"
-        android:background="#1DA322"
+        android:background="#0546EA"
         app:layout_constraintBottom_toTopOf="@+id/protectionicon"
         app:layout_constraintEnd_toStartOf="@+id/activenumber"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/totalcase"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintVertical_bias="0.118">
 
         <TextView
             android:id="@+id/totalnaumber1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="66236"
+            android:text="78499"
             android:textColor="#FBFAFA"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -132,8 +150,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/activenumber"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
         android:layout_marginEnd="4dp"
@@ -159,10 +177,10 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/deathnumber"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
         android:background="#DF1010"
         app:layout_constraintBottom_toBottomOf="@+id/activenumber"
         app:layout_constraintEnd_toEndOf="parent"
@@ -182,6 +200,69 @@
             android:textStyle="bold" />
     </androidx.cardview.widget.CardView>
 
+    <TextView
+        android:id="@+id/recovered"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:background="#FDF1F1"
+        android:gravity="center"
+        android:text="Recovered"
+        android:textColor="#090707"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/protectionicon"
+        app:layout_constraintEnd_toStartOf="@+id/today"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/totalnumber"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/today"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginRight="80dp"
+        android:background="#FDF1F1"
+        android:gravity="center"
+        android:text="Today"
+        android:textColor="#090707"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/recovered"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/recovered"
+        app:layout_constraintTop_toTopOf="@+id/recovered" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/todaynumber"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="#37EBFB"
+        app:layout_constraintBottom_toBottomOf="@+id/recoverednumber"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/recoverednumber"
+        app:layout_constraintTop_toTopOf="@+id/recoverednumber" >
+
+        <TextView
+            android:id="@+id/todaynumber1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="2234"
+            android:textColor="#FBFAFA"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+    </androidx.cardview.widget.CardView>
 
 
 </android.support.constraint.ConstraintLayout>

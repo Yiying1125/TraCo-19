@@ -6,58 +6,60 @@
     android:layout_height="match_parent"
     android:background="#562AA6">
 
-    <ImageView
-        android:id="@+id/protectionicon"
-        android:layout_width="367dp"
-        android:layout_height="410dp"
-        android:background="#24A4B5"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/covid19prevention" />
-
     <TextView
-        android:id="@+id/statistic"
+        android:id="@+id/totalcase3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
-        android:background="#FDF1F1"
-        android:gravity="center|top"
-        android:text="Latest Update Covid-19"
-        android:textColor="#DD1515"
-        android:textSize="30sp"
-        android:textStyle="bold|italic"
-        app:layout_constraintBottom_toTopOf="@+id/totalcase"
-        app:layout_constraintEnd_toStartOf="@+id/protectionicon"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.505" />
-
-    <TextView
-        android:id="@+id/totalcase"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="24dp"
         android:background="#FDF1F1"
         android:gravity="center"
         android:text="Total"
         android:textColor="#090707"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/totalnumber"
         app:layout_constraintEnd_toStartOf="@+id/activecase"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/statistic" />
+
+    <ImageView
+        android:id="@+id/protectionicon"
+        android:layout_width="340dp"
+        android:layout_height="411dp"
+        android:background="#24A4B5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.416" />
+        app:layout_constraintVertical_bias="0.4"
+        app:srcCompat="@drawable/covid19prevention" />
+
+    <TextView
+        android:id="@+id/statistic"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:background="#FDF1F1"
+        android:gravity="center|top"
+        android:text="Latest Update Covid-19"
+        android:textColor="#DD1515"
+        android:textSize="30sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/protectionicon"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.071" />
 
     <TextView
         android:id="@+id/activecase"
@@ -73,19 +75,18 @@
         android:textColor="#090707"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/totalcase"
-        app:layout_constraintEnd_toStartOf="@+id/yesterdaycase"
+        app:layout_constraintBottom_toBottomOf="@+id/totalcase3"
+        app:layout_constraintEnd_toStartOf="@+id/deathcase"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/totalcase"
-        app:layout_constraintTop_toTopOf="@+id/totalcase"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintStart_toEndOf="@+id/totalcase3"
+        app:layout_constraintTop_toTopOf="@+id/totalcase3" />
 
     <TextView
-        android:id="@+id/yesterdaycase"
+        android:id="@+id/deathcase"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        android:layout_marginRight="24dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:background="#FDF1F1"
         android:gravity="center"
         android:text="Death"
@@ -102,23 +103,20 @@
         android:id="@+id/totalnumber"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:background="#1DA322"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="72dp"
+        android:background="#0546EA"
+        app:layout_constraintBottom_toTopOf="@+id/recovered"
         app:layout_constraintEnd_toStartOf="@+id/activenumber"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/totalcase"
-        app:layout_constraintVertical_bias="0.13">
+        app:layout_constraintTop_toBottomOf="@+id/statistic">
 
         <TextView
             android:id="@+id/totalnaumber1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="66236"
+            android:text="78499"
             android:textColor="#FBFAFA"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -128,17 +126,13 @@
         android:id="@+id/activenumber"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:background="#FF9800"
         app:layout_constraintBottom_toBottomOf="@+id/totalnumber"
         app:layout_constraintEnd_toStartOf="@+id/deathnumber"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/totalnumber"
         app:layout_constraintTop_toTopOf="@+id/totalnumber"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="1.0">
 
         <TextView
             android:id="@+id/activenumber1"
@@ -155,14 +149,13 @@
         android:id="@+id/deathnumber"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
         android:background="#DF1010"
         app:layout_constraintBottom_toBottomOf="@+id/activenumber"
         app:layout_constraintEnd_toStartOf="@+id/protectionicon"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/activenumber"
-        app:layout_constraintTop_toTopOf="@+id/activenumber">
+        app:layout_constraintTop_toTopOf="@+id/activenumber"
+        app:layout_constraintVertical_bias="1.0">
 
         <TextView
             android:id="@+id/deathnumber1"
@@ -170,6 +163,97 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="396"
+            android:textColor="#FBFAFA"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/recovered"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="70dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:background="#FDF1F1"
+        android:gravity="center"
+        android:text="Recovered"
+        android:textColor="#090707"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/recoverednumber"
+        app:layout_constraintEnd_toStartOf="@+id/today"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/statistic"
+        app:layout_constraintVertical_bias="0.927" />
+
+    <TextView
+        android:id="@+id/today"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="70dp"
+        android:layout_marginRight="70dp"
+        android:background="#FDF1F1"
+        android:gravity="center"
+        android:text="Today"
+        android:textColor="#090707"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/recovered"
+        app:layout_constraintEnd_toStartOf="@+id/protectionicon"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/recovered"
+        app:layout_constraintTop_toTopOf="@+id/recovered" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/todaynumber"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:background="#37EBFB"
+        app:layout_constraintBottom_toBottomOf="@+id/recoverednumber"
+        app:layout_constraintEnd_toStartOf="@+id/protectionicon"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/recoverednumber"
+        app:layout_constraintTop_toTopOf="@+id/recoverednumber">
+
+        <TextView
+            android:id="@+id/todaynumber1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="2234"
+            android:textColor="#FBFAFA"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/recoverednumber"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:background="#11DC1B"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/todaynumber"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/statistic"
+        app:layout_constraintVertical_bias="0.894">
+
+        <TextView
+            android:id="@+id/recovernumber1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="66236"
             android:textColor="#FBFAFA"
             android:textSize="24sp"
             android:textStyle="bold" />
