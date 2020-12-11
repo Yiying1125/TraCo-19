@@ -7,7 +7,7 @@
     android:background="#562AA6">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/protectionicon"
         android:layout_width="367dp"
         android:layout_height="410dp"
         android:background="#24A4B5"
@@ -34,7 +34,7 @@
         android:textSize="30sp"
         android:textStyle="bold|italic"
         app:layout_constraintBottom_toTopOf="@+id/totalcase"
-        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintEnd_toStartOf="@+id/protectionicon"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -93,7 +93,7 @@
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/activecase"
-        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintEnd_toStartOf="@+id/protectionicon"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/activecase"
         app:layout_constraintTop_toTopOf="@+id/activecase" />
@@ -159,7 +159,7 @@
         android:layout_marginRight="8dp"
         android:background="#DF1010"
         app:layout_constraintBottom_toBottomOf="@+id/activenumber"
-        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintEnd_toStartOf="@+id/protectionicon"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/activenumber"
         app:layout_constraintTop_toTopOf="@+id/activenumber">
