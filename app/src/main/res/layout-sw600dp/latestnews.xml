@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#562AA6">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="959dp"
+        android:layout_height="798dp"
+        android:background="#24A4B5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.518"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/covid19prevention" />
+
+    <TextView
+        android:id="@+id/statistic"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:background="#FDF1F1"
+        android:gravity="center|top"
+        android:text="Latest Update Covid-19"
+        android:textColor="#DD1515"
+        android:textSize="80"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.05" />
+
+    <TextView
+        android:id="@+id/totalcase"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="#FDF1F1"
+        android:gravity="center"
+        android:text="Total"
+        android:textColor="#090707"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintEnd_toStartOf="@+id/activecase"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/statistic"
+        app:layout_constraintVertical_bias="0.204" />
+
+    <TextView
+        android:id="@+id/activecase"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="#FDF1F1"
+        android:gravity="center"
+        android:text="Active"
+        android:textColor="#090707"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/totalcase"
+        app:layout_constraintEnd_toStartOf="@+id/yesterdaycase"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/totalcase"
+        app:layout_constraintTop_toTopOf="@+id/totalcase" />
+
+    <TextView
+        android:id="@+id/yesterdaycase"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginRight="44dp"
+        android:background="#FDF1F1"
+        android:gravity="center"
+        android:text="Death"
+        android:textColor="#090707"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/activecase"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/activecase"
+        app:layout_constraintTop_toTopOf="@+id/activecase"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/totalnumber"
+        android:layout_width="240dp"
+        android:layout_height="240dp"
+        android:layout_marginBottom="116dp"
+        android:background="#1DA322"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintEnd_toStartOf="@+id/activenumber"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/totalcase"
+        app:layout_constraintVertical_bias="0.766">
+
+        <TextView
+            android:id="@+id/totalnaumber1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="66236"
+            android:textColor="#FBFAFA"
+            android:textSize="50sp"
+            android:textStyle="bold" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/activenumber"
+        android:layout_width="240dp"
+        android:layout_height="240dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginEnd="4dp"
+        android:layout_marginRight="4dp"
+        android:background="#FF9800"
+        app:layout_constraintBottom_toBottomOf="@+id/totalnumber"
+        app:layout_constraintEnd_toStartOf="@+id/deathnumber"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/totalnumber"
+        app:layout_constraintTop_toTopOf="@+id/totalnumber"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/activenumber1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="11867"
+            android:textColor="#FBFAFA"
+            android:textSize="50sp"
+            android:textStyle="bold" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/deathnumber"
+        android:layout_width="240dp"
+        android:layout_height="240dp"
+        android:background="#DF1010"
+        app:layout_constraintBottom_toBottomOf="@+id/activenumber"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/activenumber"
+        app:layout_constraintTop_toTopOf="@+id/activenumber"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/deathnumber1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="396"
+            android:textColor="#FBFAFA"
+            android:textSize="50sp"
+            android:textStyle="bold" />
+    </androidx.cardview.widget.CardView>
+
+
+</android.support.constraint.ConstraintLayout>
