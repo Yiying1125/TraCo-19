@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/register_kground">
+
+    <LinearLayout
+        android:layout_width="502dp"
+        android:layout_height="397dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/register_text"
+            android:layout_width="match_parent"
+            android:layout_height="69dp"
+            android:gravity="center"
+            android:text="Register"
+            android:textColor="#FFFFFF"
+            android:textSize="40sp"
+            android:textStyle="bold" />
+
+        <FrameLayout
+            android:id="@+id/user_frame"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/register_frame_user">
+
+            <ImageView
+
+                android:id="@+id/register_user_icon"
+                android:layout_width="64dp"
+                android:layout_height="51dp"
+                android:layout_gravity="center|left"
+                app:srcCompat="@drawable/user_icon" />
+
+            <TextView
+
+                android:id="@+id/register_user_text"
+                android:layout_width="390dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|right"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:background="#DDDCDC"
+                android:gravity="center|left"
+                android:text="Password"
+                android:textColor="#050505"
+                android:textSize="18sp" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/emai_frame"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/register_frame_email">
+
+            <ImageView
+
+                android:id="@+id/register_email_icon"
+                android:layout_width="60dp"
+                android:layout_height="55dp"
+                android:layout_gravity="center|left"
+                android:layout_marginStart="2dp"
+                android:layout_marginLeft="2dp"
+                android:background="#C6EAFF"
+                app:srcCompat="@drawable/email_icon" />
+
+            <TextView
+
+                android:id="@+id/register_email_text"
+                android:layout_width="390dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|right"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:background="#FFFFFF"
+                android:gravity="center|left"
+                android:text="Email"
+                android:textColor="#050505"
+                android:textSize="18sp" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/password_frame"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/register_frame_user">
+
+            <ImageView
+
+                android:id="@+id/register_password_icon"
+                android:layout_width="75dp"
+                android:layout_height="59dp"
+                android:layout_gravity="center|left"
+                app:srcCompat="@drawable/password_icon" />
+
+            <TextView
+
+                android:id="@+id/register_password_text"
+                android:layout_width="390dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|right"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:background="#DDDCDC"
+                android:gravity="center|left"
+                android:text="Password"
+                android:textColor="#050505"
+                android:textSize="18sp" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/conform_password_frame"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/register_frame_email">
+
+            <ImageView
+
+                android:id="@+id/register_conform_password_icon"
+                android:layout_width="75dp"
+                android:layout_height="59dp"
+                android:layout_gravity="center|left"
+                android:background="#C6EAFF"
+                app:srcCompat="@drawable/conform_password_icon" />
+
+            <TextView
+
+                android:id="@+id/register_conform_password_text"
+                android:layout_width="390dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|right"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:background="#FFFFFF"
+                android:gravity="center|left"
+                android:text="Conform Password"
+                android:textColor="#050505"
+                android:textSize="18sp" />
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/register_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/register_button"
+            android:text="Register"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/already_have_account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:gravity="center"
+            android:text="Already have an account"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

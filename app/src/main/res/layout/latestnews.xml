@@ -10,12 +10,14 @@
         android:id="@+id/recoverednumber"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:background="#11DC1B"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/latest_update_recovered"
         app:layout_constraintBottom_toTopOf="@+id/protectionicon"
         app:layout_constraintEnd_toStartOf="@+id/todaynumber"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recovered" >
+        app:layout_constraintTop_toBottomOf="@+id/recovered">
 
         <TextView
             android:id="@+id/recovernumber1"
@@ -50,7 +52,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
         android:layout_marginRight="24dp"
-        android:background="#FDF1F1"
+        android:background="@drawable/latest_update_statistic"
         android:gravity="center|top"
         android:text="Latest Update Covid-19"
         android:textColor="#DD1515"
@@ -62,26 +64,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.05" />
-
-    <TextView
-        android:id="@+id/totalcase"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginLeft="44dp"
-        android:layout_marginTop="24dp"
-        android:background="#FDF1F1"
-        android:gravity="center"
-        android:text="Total"
-        android:textColor="#090707"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/protectionicon"
-        app:layout_constraintEnd_toStartOf="@+id/activecase"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/statistic"
-        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/activecase"
@@ -102,6 +84,26 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/totalcase"
         app:layout_constraintTop_toTopOf="@+id/totalcase" />
+
+    <TextView
+        android:id="@+id/totalcase"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="24dp"
+        android:background="#FDF1F1"
+        android:gravity="center"
+        android:text="Total"
+        android:textColor="#090707"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/protectionicon"
+        app:layout_constraintEnd_toStartOf="@+id/activecase"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/statistic"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/deathcase"
@@ -129,7 +131,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
         android:layout_marginBottom="116dp"
-        android:background="#0546EA"
+        android:background="@drawable/latest_update_total"
         app:layout_constraintBottom_toTopOf="@+id/protectionicon"
         app:layout_constraintEnd_toStartOf="@+id/activenumber"
         app:layout_constraintHorizontal_bias="0.5"
@@ -156,7 +158,7 @@
         android:layout_marginLeft="4dp"
         android:layout_marginEnd="4dp"
         android:layout_marginRight="4dp"
-        android:background="#FF9800"
+        android:background="@drawable/latest_update_active"
         app:layout_constraintBottom_toBottomOf="@+id/totalnumber"
         app:layout_constraintEnd_toStartOf="@+id/deathnumber"
         app:layout_constraintHorizontal_bias="0.5"
@@ -181,7 +183,7 @@
         android:layout_height="80dp"
         android:layout_marginEnd="24dp"
         android:layout_marginRight="24dp"
-        android:background="#DF1010"
+        android:background="@drawable/latest_update_death"
         app:layout_constraintBottom_toBottomOf="@+id/activenumber"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -246,12 +248,14 @@
         android:id="@+id/todaynumber"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:background="#37EBFB"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/latest_update_today"
         app:layout_constraintBottom_toBottomOf="@+id/recoverednumber"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/recoverednumber"
-        app:layout_constraintTop_toTopOf="@+id/recoverednumber" >
+        app:layout_constraintTop_toTopOf="@+id/recoverednumber">
 
         <TextView
             android:id="@+id/todaynumber1"
