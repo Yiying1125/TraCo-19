@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background">
+
+
+    <LinearLayout
+        android:layout_width="714dp"
+        android:layout_height="1511dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.605">
+
+        <FrameLayout
+            android:layout_width="700dp"
+            android:layout_height="419dp">
+
+            <TextView
+                android:id="@+id/tracotext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/shape"
+
+                android:gravity="center"
+                android:text="@string/tracotext"
+                android:textColor="#F31313"
+                android:textSize="140sp"
+                android:textStyle="bold|italic" />
+
+            <TextView
+                android:id="@+id/accountLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center"
+                android:background="@drawable/account_login_text"
+                android:gravity="center"
+                android:text="@string/accountLogin"
+                android:textColor="#ffff"
+                android:textSize="70sp"
+                android:textStyle="bold" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="739dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/email_passward_layout">
+
+            <LinearLayout
+                android:layout_width="124dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/email_icon"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="fill_horizontal|left"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="#090909"
+                    app:srcCompat="@android:drawable/sym_action_email" />
+
+                <ImageView
+                    android:id="@+id/password_icon"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="#0C0B0B"
+                    app:srcCompat="@android:drawable/ic_lock_lock" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="269dp"
+                android:layout_gravity="left"
+                android:layout_marginStart="130dp"
+                android:layout_marginLeft="130dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/emailText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="45dp"
+                    android:text="email"
+                    android:textSize="50sp" />
+
+                <TextView
+                    android:id="@+id/passwordText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="40dp"
+                    android:text="password"
+                    android:textSize="50sp" />
+            </LinearLayout>
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/forgot_password_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="Forgot Password?"
+            android:textColor="#070606"
+            android:textSize="36sp"
+            android:textStyle="bold" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="82dp">
+
+            <Button
+                android:id="@+id/login_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/login_button"
+                android:gravity="center"
+                android:text="@string/logintext"
+                android:textColor="#FFFFFF"
+                android:textSize="70sp" />
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/dont_have_account_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Don't have an account? Sign up"
+            android:textColor="#0B0A0A"
+            android:textSize="30sp"
+            android:textStyle="bold|italic" />
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
