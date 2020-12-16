@@ -2,4 +2,6 @@
     <string name="app_name">TraCo-19</string>
     <string name="tracotext">TraCo-19</string>
     <string name="logintext">Login</string>
+    <string name="accountLogin">Account Login</string>
+    <string name="create_account">Create an account here</string>
 </resources>
