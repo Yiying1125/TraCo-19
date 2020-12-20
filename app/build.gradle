@@ -1,5 +1,7 @@
 plugins {
     id 'com.android.application'
+    id 'com.android.internal.version-check' //added when sync now error 12/20/2020
+
 }
 
 android {

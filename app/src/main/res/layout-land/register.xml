@@ -50,7 +50,7 @@
                 android:layout_marginRight="20dp"
                 android:background="#DDDCDC"
                 android:gravity="center|left"
-                android:text="Password"
+                android:text="Username"
                 android:textColor="#050505"
                 android:textSize="18sp" />
         </FrameLayout>
@@ -168,7 +168,7 @@
             android:textSize="18sp"
             android:textStyle="bold" />
 
-    </RelativeLayout>
-
     </LinearLayout>
+
+    
 </android.support.constraint.ConstraintLayout>
