@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "18015762421",
+    "project_id": "traco-19",
+    "storage_bucket": "traco-19.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:18015762421:android:0e6840314feebcfc6992bc",
+        "android_client_info": {
+          "package_name": "mmu.edu.my.traco_19"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "18015762421-l7n5g6pp46nio96q5prgqp6f9realecm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC66T_qcZVGKLvzD1Q2Jj9Z28JsxecwErk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "18015762421-l7n5g6pp46nio96q5prgqp6f9realecm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

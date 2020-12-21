@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -87,31 +87,33 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="472dp"
-                android:layout_height="137dp"
+                android:layout_width="475dp"
+                android:layout_height="189dp"
                 android:layout_gravity="left"
                 android:layout_marginStart="75dp"
                 android:layout_marginLeft="75dp"
                 android:orientation="vertical">
 
-                <TextView
+                <EditText
                     android:id="@+id/emailText"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="38dp"
                     android:layout_marginStart="5dp"
                     android:layout_marginLeft="5dp"
-                    android:layout_marginTop="15dp"
-                    android:text="email"
+                    android:layout_marginTop="8dp"
+                    android:hint="email"
+                    android:inputType="textEmailAddress"
                     android:textSize="18sp" />
 
-                <TextView
+                <EditText
                     android:id="@+id/passwordText"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="38dp"
                     android:layout_marginStart="5dp"
                     android:layout_marginLeft="5dp"
-                    android:layout_marginTop="15dp"
-                    android:text="password"
+                    android:layout_marginTop="8dp"
+                    android:hint="password"
+                    android:inputType="textPassword"
                     android:textSize="18sp" />
             </LinearLayout>
         </FrameLayout>
@@ -155,4 +157,4 @@
 
     </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

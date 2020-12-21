@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -94,24 +94,26 @@
                 android:layout_marginLeft="130dp"
                 android:orientation="vertical">
 
-                <TextView
+                <EditText
                     android:id="@+id/emailText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="45dp"
-                    android:text="email"
+                    android:inputType="textEmailAddress"
+                    android:hint="email"
                     android:textSize="50sp" />
 
-                <TextView
+                <EditText
                     android:id="@+id/passwordText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="40dp"
-                    android:text="password"
+                    android:inputType="textPassword"
+                    android:hint="password"
                     android:textSize="50sp" />
             </LinearLayout>
         </FrameLayout>
@@ -155,4 +157,4 @@
 
     </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
