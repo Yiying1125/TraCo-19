@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -40,7 +40,7 @@
                 android:layout_gravity="center|left"
                 app:srcCompat="@drawable/user_icon" />
 
-            <TextView
+            <EditText
 
                 android:id="@+id/register_user_text"
                 android:layout_width="590dp"
@@ -50,7 +50,8 @@
                 android:layout_marginRight="20dp"
                 android:background="#DDDCDC"
                 android:gravity="center|left"
-                android:text="Username"
+                android:inputType="textPersonName"
+                android:hint="Username"
                 android:textColor="#050505"
                 android:textSize="50sp" />
         </FrameLayout>
@@ -71,7 +72,7 @@
                 android:background="#C6EAFF"
                 app:srcCompat="@drawable/email_icon" />
 
-            <TextView
+            <EditText
 
                 android:id="@+id/register_email_text"
                 android:layout_width="590dp"
@@ -81,7 +82,8 @@
                 android:layout_marginRight="20dp"
                 android:background="#FFFFFF"
                 android:gravity="center|left"
-                android:text="Email"
+                android:inputType="textEmailAddress"
+                android:hint="Email"
                 android:textColor="#050505"
                 android:textSize="50sp" />
         </FrameLayout>
@@ -101,8 +103,7 @@
                 android:layout_gravity="center|left"
                 app:srcCompat="@drawable/password_icon" />
 
-            <TextView
-
+            <EditText
                 android:id="@+id/register_password_text"
                 android:layout_width="590dp"
                 android:layout_height="wrap_content"
@@ -111,7 +112,8 @@
                 android:layout_marginRight="20dp"
                 android:background="#DDDCDC"
                 android:gravity="center|left"
-                android:text="Password"
+                android:inputType="textPassword"
+                android:hint="Password"
                 android:textColor="#050505"
                 android:textSize="50sp" />
         </FrameLayout>
@@ -132,7 +134,7 @@
                 android:background="#C6EAFF"
                 app:srcCompat="@drawable/conform_password_icon" />
 
-            <TextView
+            <EditText
 
                 android:id="@+id/register_conform_password_text"
                 android:layout_width="590dp"
@@ -142,7 +144,8 @@
                 android:layout_marginRight="20dp"
                 android:background="#FFFFFF"
                 android:gravity="center|left"
-                android:text="Conform Password"
+                android:inputType="textPassword"
+                android:hint="Confirm Password"
                 android:textColor="#050505"
                 android:textSize="50sp" />
         </FrameLayout>
@@ -169,4 +172,4 @@
 
     </LinearLayout>
 
-    </android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
