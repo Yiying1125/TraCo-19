@@ -2,6 +2,7 @@ package mmu.edu.my.traco_19;
 
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 
@@ -64,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
             notifyDataSetChanged();
         }
 
-        class MyViewHolder extends RecyclerView.ViewHolder {
+        class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
             public TextView textView;
             public TextView textView2;
             public ImageView imageView;
@@ -73,7 +74,16 @@ public class MainActivity extends AppCompatActivity {
                 textView = itemView.findViewById(R.id.track);
                 textView2 = itemView.findViewById(R.id.trackldesc);
                 imageView = itemView.findViewById(R.id.trackicon);
+                itemView.setOnClickListener(this);
             }
+
+            @Override
+            public void onClick(View v) {
+                String name= elements.get(getAdapterPosition()).getName();
+                startActivity(new Intent(MainActivity.this,LatestUpdateActivity.class));
+                finish();
+            }
+
         }
     }
 }
