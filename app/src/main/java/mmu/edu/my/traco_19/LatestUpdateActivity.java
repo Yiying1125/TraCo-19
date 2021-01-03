@@ -34,6 +34,7 @@ public class LatestUpdateActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.latest_update);
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
@@ -116,6 +117,16 @@ public class LatestUpdateActivity extends AppCompatActivity {
             finish();
         return super.onOptionsItemSelected(item);
     }
+    /*@Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+        }
+
+        return (super.onOptionsItemSelected(item));
+    }*/
 
 
 }

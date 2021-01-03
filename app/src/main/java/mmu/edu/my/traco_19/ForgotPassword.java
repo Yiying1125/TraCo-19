@@ -26,8 +26,7 @@ public class ForgotPassword extends AppCompatActivity {
         setContentView(R.layout.activity_forgot_password);
         firebaseAuth=FirebaseAuth.getInstance();
         email=findViewById(R.id.editTextTextEmail);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
 
         getSupportActionBar().setTitle("TraCo-19 (Forgot Password)");
         Button reset=findViewById(R.id.btnReset);
@@ -53,10 +52,5 @@ public class ForgotPassword extends AppCompatActivity {
             }
         });
     }
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == android.R.id.home)
-            finish();
-        return super.onOptionsItemSelected(item);
-    }
+
 }
