@@ -27,8 +27,6 @@ public class ForgotPassword extends AppCompatActivity {
         firebaseAuth=FirebaseAuth.getInstance();
         email=findViewById(R.id.editTextTextEmail);
 
-
-        getSupportActionBar().setTitle("TraCo-19 (Forgot Password)");
         Button reset=findViewById(R.id.btnReset);
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,5 +50,6 @@ public class ForgotPassword extends AppCompatActivity {
             }
         });
     }
+
 
 }
