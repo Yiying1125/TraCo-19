@@ -106,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
         backPressToast = Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT);
         backPressToast.show();
 
+
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
