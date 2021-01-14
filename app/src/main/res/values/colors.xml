@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="colorPrimary">#539AA5</color>
+    <color name="colorPrimaryDark">#286068</color>
+    <color name="backGroundColour">#E3E3E9</color>
+    <color name="mmuColourSecondary">#ed1c24</color>
+    <color name="colorAccent">#E3E3E9</color>
+    <color name="colorRipple">#c1c1c0</color>
+    <color name="grey">#6D212640</color>
+
+
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>

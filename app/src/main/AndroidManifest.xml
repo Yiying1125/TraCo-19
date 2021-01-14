@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="mmu.edu.my.traco_19">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -11,17 +12,41 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TraCo19">
-        <activity android:name=".ForgotPassword" />
-        <activity android:name=".LatestUpdateActivity" />
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".LoginActivity">
+        <activity android:name=".Activities.Register"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.TraCo19.NoActionBar"
+            android:windowSoftInputMode="adjustPan"
+            tools:ignore="LockedOrientationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Activities.ForgotPassword"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.TraCo19.NoActionBar"
+            android:windowSoftInputMode="adjustPan"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity android:name=".Activities.UserDashboard"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.TraCo19.NoActionBar"
+            android:windowSoftInputMode="adjustPan"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity android:name=".Activities.LocationHistory"
+        android:configChanges="orientation"
+        android:screenOrientation="portrait"
+        android:theme="@style/Theme.TraCo19.NoActionBar"
+        android:windowSoftInputMode="adjustPan"
+        tools:ignore="LockedOrientationActivity"/>
+        <activity android:name=".ForgotPassword" />
+        <activity android:name=".LatestUpdateActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".LoginActivity"/>
     </application>
 
 </manifest>
