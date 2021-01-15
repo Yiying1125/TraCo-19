@@ -29,7 +29,7 @@ import java.text.NumberFormat;
 
 public class LatestUpdateActivity extends AppCompatActivity {
     private TextView tv_totalnumber1, tv_activenumber1, tv_deathnumber1, tv_recoverednumber1, tv_todaynumber1;
-    private String str_total, str_active, str_death, str_recovered, str_today, str_tadaycal;
+    private String str_total, str_active, str_death, str_recovered, str_today, str_yesterday;
     private SwipeRefreshLayout swipeRefreshLayout;
     private int int_today,int_yesterday;
     private ProgressDialog progressDialog;
@@ -70,10 +70,12 @@ public class LatestUpdateActivity extends AppCompatActivity {
                         try {
 
                             JSONObject result= response.getJSONObject(response.length()-1);
+                            JSONObject result2= response.getJSONObject(response.length()-2);
                             str_total = result.getString("testedPositive");
                             str_active = result.getString("activeCases");
                             str_death = result.getString("deceased");
                             str_recovered = result.getString("recovered");
+                            str_yesterday=result2.getString("testedPositive");
 
                             Handler delayToShowProgress = new Handler();
                             delayToShowProgress.postDelayed(new Runnable() {
@@ -84,8 +86,9 @@ public class LatestUpdateActivity extends AppCompatActivity {
                                     tv_activenumber1.setText(NumberFormat.getInstance().format(Integer.parseInt(str_active)));
                                     tv_recoverednumber1.setText(NumberFormat.getInstance().format(Integer.parseInt(str_recovered)));
                                     tv_deathnumber1.setText(NumberFormat.getInstance().format(Integer.parseInt(str_death)));
-                                    int_yesterday = Integer.parseInt(str_total) - Integer.parseInt(str_recovered)-Integer.parseInt(str_death);
-                                    int_today=Integer.parseInt(str_active)-int_yesterday;
+                                    //int_yesterday = Integer.parseInt(str_total) - Integer.parseInt(str_recovered)-Integer.parseInt(str_death);
+                                    //int_today=Integer.parseInt(str_active)-int_yesterday;
+                                    int_today=Integer.parseInt(str_total)-Integer.parseInt(str_yesterday);
                                     tv_todaynumber1.setText(NumberFormat.getInstance().format(int_today));
                                     dismissDialog();
                                 }}, 1000);
@@ -98,7 +101,7 @@ public class LatestUpdateActivity extends AppCompatActivity {
                     } }
         );
         jsonArrayRequest.setRetryPolicy(new DefaultRetryPolicy(
-                5000,
+                10000,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
         requestQueue.add(jsonArrayRequest);
