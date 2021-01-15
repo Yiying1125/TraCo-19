@@ -311,7 +311,6 @@ public class Register extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
         ref = FirebaseDatabase.getInstance().getReference().child("Member");
 
-
         scrollView.setOnTouchListener((v, event) -> {
             clearFocus();
             return false;

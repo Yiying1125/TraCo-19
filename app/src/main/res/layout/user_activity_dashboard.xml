@@ -20,7 +20,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text="GPA Booster"
+            android:text="TraCo-19"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             tools:ignore="HardcodedText" />

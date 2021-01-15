@@ -4,10 +4,9 @@
     <color name="colorPrimaryDark">#286068</color>
     <color name="backGroundColour">#E3E3E9</color>
     <color name="mmuColourSecondary">#ed1c24</color>
-    <color name="colorAccent">#E3E3E9</color>
+    <color name="colorAccent">#4CAF50</color>
     <color name="colorRipple">#c1c1c0</color>
     <color name="grey">#6D212640</color>
-
 
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>

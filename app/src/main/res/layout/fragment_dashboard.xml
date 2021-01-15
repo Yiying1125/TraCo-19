@@ -86,7 +86,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?attr/selectableItemBackground"
-                android:onClick="LocationHistory"
+                android:onClick="ThemChanger"
                 android:stateListAnimator="@anim/animation"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="6dp">
@@ -103,7 +103,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="100dp"
                         android:scaleType="fitCenter"
-                        android:src="@drawable/route"
+                        android:src="@drawable/brush2"
                         tools:ignore="ContentDescription" />
 
                     <TextView
@@ -111,7 +111,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
                         android:gravity="center"
-                        android:text="Location History"
+                        android:text="Change Theme"
                         android:textColor="#000000"
                         android:textSize="14sp" />
 
@@ -153,47 +153,6 @@
                         android:layout_marginTop="12dp"
                         android:gravity="center"
                         android:text="Log Out"
-                        android:textColor="#000000"
-                        android:textSize="14sp" />
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_rowWeight="1"
-                android:layout_columnWeight="1"
-                android:layout_margin="6dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?attr/selectableItemBackground"
-                android:onClick="ThemChanger"
-                android:stateListAnimator="@anim/animation"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="6dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:orientation="vertical"
-                    android:padding="17dp">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"
-                        android:scaleType="fitCenter"
-                        android:src="@drawable/brush2"
-                        tools:ignore="ContentDescription" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:gravity="center"
-                        android:text="Change Theme"
                         android:textColor="#000000"
                         android:textSize="14sp" />
 
