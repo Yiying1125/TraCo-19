@@ -4,4 +4,8 @@
     <string name="logintext">Login</string>
     <string name="accountLogin">Account Login</string>
     <string name="create_account">Create an account here</string>
+    <color name="circleBorder">#50FFFFFF</color>
+    <color name="solidCircle">#AAFFFFFF</color>
+
+    <string name="Create"><u>Create</u>.</string>
 </resources>
