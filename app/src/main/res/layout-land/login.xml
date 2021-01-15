@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background">
 
-
+    //not use in our app due to the app is include location service don't support landscape style
     <LinearLayout
         android:layout_width="553dp"
         android:layout_height="361dp"

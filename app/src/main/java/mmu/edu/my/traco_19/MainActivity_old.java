@@ -1,6 +1,6 @@
 package mmu.edu.my.traco_19;
 
-
+//old version of main activity not use but haven't deteled
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
