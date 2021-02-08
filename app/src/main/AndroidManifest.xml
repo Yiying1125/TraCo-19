@@ -4,27 +4,32 @@
     package="mmu.edu.my.traco_19">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:usesCleartextTraffic="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TraCo19"
+        android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".Activities.Register"
+        <activity android:name=".Activities.ChangeTheme"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.TraCo19.NoActionBar"
+            android:theme="@style/Theme.TraCo19"
+            android:windowSoftInputMode="adjustPan"
+            tools:ignore="LockedOrientationActivity"/>
+        <activity
+            android:name=".Activities.Register"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.TraCo19"
             android:windowSoftInputMode="adjustPan"
             tools:ignore="LockedOrientationActivity">
             <intent-filter>
@@ -33,33 +38,38 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.ForgotPassword"
+        <activity
+            android:name=".Activities.ForgotPassword"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.TraCo19.NoActionBar"
+            android:theme="@style/Theme.TraCo19"
             android:windowSoftInputMode="adjustPan"
-            tools:ignore="LockedOrientationActivity"/>
-        <activity android:name=".Activities.UserDashboard"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".Activities.UserDashboard"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.TraCo19.NoActionBar"
+            android:theme="@style/Theme.TraCo19"
             android:windowSoftInputMode="adjustPan"
-            tools:ignore="LockedOrientationActivity"/>
-        <activity android:name=".Activities.LocationHistory"
-        android:configChanges="orientation"
-        android:screenOrientation="portrait"
-        android:theme="@style/Theme.TraCo19.NoActionBar"
-        android:windowSoftInputMode="adjustPan"
-        tools:ignore="LockedOrientationActivity"/>
-        <activity android:name=".Activities.mapLiveLocation"
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".Activities.LocationHistory"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.TraCo19.NoActionBar"
+            android:theme="@style/Theme.TraCo19"
             android:windowSoftInputMode="adjustPan"
-            tools:ignore="LockedOrientationActivity"/>
+            tools:ignore="LockedOrientationActivity" />
+        <activity
+            android:name=".Activities.mapLiveLocation"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.TraCo19"
+            android:windowSoftInputMode="adjustPan"
+            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />
+
         <service
             android:name=".Services.LocationService"
             android:enabled="true"
@@ -78,10 +88,11 @@
             android:value="barcode" />
 
         <activity android:name=".ForgotPassword" />
-        <activity android:name=".LatestUpdateActivity" />
+        <activity android:name=".LatestUpdateActivity"
+            android:theme="@style/Theme.TraCo" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".LoginActivity"/>
+        <activity android:name=".LoginActivity" />
     </application>
 
 </manifest>

@@ -10,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -44,7 +43,7 @@ public class Profile extends Fragment implements PopupMenu.OnMenuItemClickListen
     LinearLayout PreviewMode;
     ImageView selectedImage;
     ProgressBar progressBar;
-    Switch serviceSwitch,locationSwitch;
+    Switch serviceSwitch, locationSwitch;
 
     //vars
     String Id;
@@ -54,11 +53,13 @@ public class Profile extends Fragment implements PopupMenu.OnMenuItemClickListen
     boolean popUp = true;
     BottomSheetDialog bottomSheet;
     Profile profile = this;
+    int background;
 
-    public Profile(String id, Context context, UserDashboard userDashboard) {
+    public Profile(String id, Context context, UserDashboard userDashboard, int background) {
         this.Id = id;
         this.context = context;
         this.userDashboard = userDashboard;
+        this.background = background;
     }
 
     public void setURI(Uri uri) {
@@ -77,6 +78,10 @@ public class Profile extends Fragment implements PopupMenu.OnMenuItemClickListen
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        if(getView()!=null){
+            ImageView Background = getView().findViewById(R.id.background);
+            Background.setBackgroundResource(background);
+        }
         if (!Id.isEmpty() && getView() != null) {
             InitFunc();
         }
@@ -96,13 +101,13 @@ public class Profile extends Fragment implements PopupMenu.OnMenuItemClickListen
         emailB = getView().findViewById(R.id.emailB);
         statusB = getView().findViewById(R.id.statusB);
         serviceSwitch = getView().findViewById(R.id.serviceSwitch);
-        locationSwitch=getView().findViewById(R.id.locationSwitch);
+        locationSwitch = getView().findViewById(R.id.locationSwitch);
         progressBar = getView().findViewById(R.id.progressBar);
         updateInfo();
         emailB.setOnClickListener(v -> createBottomSheet(email.getText().toString(), "Enter your email", "email"));
         nameB.setOnClickListener(v -> createBottomSheet(name.getText().toString(), "Enter your name", "name"));
         statusB.setOnClickListener(v -> showPopUp(status));
-        serviceSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> userDashboard.turnOnService(isChecked,serviceSwitch));
+        serviceSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> userDashboard.turnOnService(isChecked, serviceSwitch));
         locationSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> userDashboard.showLocation(isChecked));
     }
 
@@ -119,8 +124,8 @@ public class Profile extends Fragment implements PopupMenu.OnMenuItemClickListen
                     setButtonStatus(status);
                     serviceSwitch.setChecked(userDashboard.isMyServiceRunning());
                     locationSwitch.setChecked(userDashboard.getShowLocation());
-                }else{
-                    Toast.makeText(context,"Your info doesn't exist on our server!",Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(context, "Your info doesn't exist on our server!", Toast.LENGTH_LONG).show();
                 }
                 progressBar.setVisibility(View.GONE);
             }

@@ -107,8 +107,36 @@ public class mapLiveLocation extends AppCompatActivity implements OnMapReadyCall
     public void empty(View view) {
     }
 
+    public void setTHeme(int pos) {
+        int style = R.style.Theme_TraCo19;
+
+        if (pos == 1) {
+            style = R.style.Theme_TraCo191;
+        } else if (pos == 2) {
+            style = R.style.Theme_TraCo192;
+        } else if (pos == 3) {
+            style = R.style.Theme_TraCo193;
+        } else if (pos == 4) {
+            style = R.style.Theme_TraCo194;
+        } else if (pos == 5) {
+            style = R.style.Theme_TraCo195;
+        } else if (pos == 6) {
+            style = R.style.Theme_TraCo196;
+        }
+        setTheme(style);
+    }
+
+    public int get_Int(String str) {
+        try {
+            return Integer.parseInt(str);
+        } catch (Exception ignored) {
+            return 0;
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTHeme(get_Int(loadData("Theme")));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map_live_location);
 

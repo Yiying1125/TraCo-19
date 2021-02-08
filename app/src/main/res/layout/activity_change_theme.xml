@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:coverflow="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.ChangeTheme">
+
+    <ImageView
+        android:id="@+id/backGround"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/background"/>
+
+    <FrameLayout
+        android:id="@+id/toolbar"
+        style="@style/Base_ToolbarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_marginBottom="-1dp"
+        android:elevation="20dp"
+        android:orientation="horizontal"
+        tools:targetApi="lollipop">
+        <FrameLayout
+            android:layout_width="?attr/actionBarSize"
+            android:layout_height="?attr/actionBarSize">
+
+            <ImageButton
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="7dp"
+                android:background="@drawable/ripple_effect_oval_no_background"
+                android:onClick="back"
+                android:scaleType="centerInside"
+                android:src="@drawable/abc_vector_test" />
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="TraCo-19"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            tools:ignore="HardcodedText" />
+    </FrameLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginLeft="3dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="3dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical">
+
+        <it.moondroid.coverflow.components.ui.containers.FeatureCoverFlow
+            android:id="@+id/coverflow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            coverflow:coverHeight="200dp"
+            coverflow:coverWidth="100dp"
+            coverflow:maxScaleFactor="1.5"
+            coverflow:reflectionGap="0px"
+            coverflow:reflectionOpacity="0"
+            coverflow:rotationThreshold="0.8"
+            coverflow:scalingThreshold="0.6"
+            coverflow:spacing="0.5" />
+
+        <TextView
+            android:id="@+id/pageNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/back"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:layout_weight="0.5"
+                android:background="@android:color/white"
+                android:text="back"
+                android:textColor="?colorPrimary" />
+
+            <Button
+                android:id="@+id/next"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_marginEnd="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="0.5"
+                android:background="@android:color/white"
+                android:text="Next"
+                android:textColor="?colorPrimary" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/save"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="5dp"
+            android:background="?colorPrimary"
+            android:onClick="save"
+            android:text="save"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+
+</RelativeLayout>

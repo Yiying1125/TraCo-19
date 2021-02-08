@@ -36,8 +36,8 @@ import com.theartofdev.edmodo.cropper.CropImageView;
 
 import maes.tech.intentanim.CustomIntent;
 import mmu.edu.my.traco_19.Fragments.Dashboard;
-import mmu.edu.my.traco_19.Fragments.LatestUpdates;
 import mmu.edu.my.traco_19.Fragments.Profile;
+import mmu.edu.my.traco_19.LatestUpdateActivity;
 import mmu.edu.my.traco_19.R;
 import mmu.edu.my.traco_19.Services.LocationService;
 
@@ -53,7 +53,12 @@ public class UserDashboard extends AppCompatActivity {
     Context context = this;
     public static BottomNavigationView bottomNav;
     int PERMISSION_ID = 44;
+    int background = R.drawable.background;
     Switch switchService;
+
+    public void LatestUpdates(View view){
+        startActivity(new Intent(getApplicationContext(), LatestUpdateActivity.class));
+    }
 
     public void addPic(View view) {
         CropImage.activity()
@@ -62,7 +67,7 @@ public class UserDashboard extends AppCompatActivity {
                 .start(UserDashboard.this);
     }
 
-    public void currentLocation(View view){
+    public void currentLocation(View view) {
         Intent i = new Intent(getApplicationContext(), mapLiveLocation.class);
         String UserId = loadData("Id");
         i.putExtra("UserId", UserId);
@@ -78,7 +83,8 @@ public class UserDashboard extends AppCompatActivity {
     }
 
     public void ThemChanger(View view) {
-        Toast.makeText(context,"Under Maintenance!",LENGTH_SHORT).show();
+        startActivity(new Intent(getApplicationContext(), ChangeTheme.class));
+        finish();
     }
 
     public void logout(View view) {
@@ -89,15 +95,48 @@ public class UserDashboard extends AppCompatActivity {
         CustomIntent.customType(this, "right-to-left");
     }
 
+    public void setTHeme(int pos) {
+        int style = R.style.Theme_TraCo19;
+
+        if (pos == 1) {
+            style = R.style.Theme_TraCo191;
+            background = R.drawable.background1;
+        } else if (pos == 2) {
+            style = R.style.Theme_TraCo192;
+            background = R.drawable.background2;
+        } else if (pos == 3) {
+            style = R.style.Theme_TraCo193;
+            background = R.drawable.background3;
+        } else if (pos == 4) {
+            style = R.style.Theme_TraCo194;
+            background = R.drawable.background4;
+        } else if (pos == 5) {
+            style = R.style.Theme_TraCo195;
+            background = R.drawable.background5;
+        } else if (pos == 6) {
+            style = R.style.Theme_TraCo196;
+            background = R.drawable.background6;
+        }
+        setTheme(style);
+    }
+
+    public int getInt(String str) {
+        try {
+            return Integer.parseInt(str);
+        } catch (Exception ignored) {
+            return 0;
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTHeme(getInt(loadData("Theme")));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user_activity_dashboard);
 
-
         bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
-        profile = new Profile(loadData("Id"), context, userDashboard);
+        profile = new Profile(loadData("Id"), context, userDashboard, background);
 
         if (savedInstanceState == null) {
             if (loadData("Selection").compareTo("0") == 0) {
@@ -107,11 +146,7 @@ public class UserDashboard extends AppCompatActivity {
             } else if (loadData("Selection").compareTo("1") == 0) {
                 bottomNav.setSelectedItemId(R.id.home);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new Dashboard()).commit();
-            } else if (loadData("Selection").compareTo("2") == 0) {
-                bottomNav.setSelectedItemId(R.id.LatestUpdates);
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new LatestUpdates()).commit();
+                        new Dashboard(background)).commit();
             } else {
                 bottomNav.setSelectedItemId(R.id.profile);
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
@@ -134,13 +169,13 @@ public class UserDashboard extends AppCompatActivity {
                         case R.id.home:
                             saveData("1", "Selection");
                             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                                    new Dashboard()).commit();
+                                    new Dashboard(background)).commit();
                             break;
-                        case R.id.LatestUpdates:
-                            saveData("2", "Selection");
-                            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                                    new LatestUpdates()).commit();
-                            break;
+//                        case R.id.LatestUpdates:
+//                            saveData("2", "Selection");
+//                            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+//                                    new LatestUpdates()).commit();
+//                            break;
                     }
                     return true;
                 }
@@ -182,8 +217,8 @@ public class UserDashboard extends AppCompatActivity {
     public void showLocation(Boolean showLocation) {
         if (showLocation) {
             saveData("1", "showLocation");
-        }else{
-            saveData("","showLocation");
+        } else {
+            saveData("", "showLocation");
             FirebaseDatabase.getInstance().getReference().child("Member/" + loadData("Id") + "/CurrLocation").removeValue();
         }
     }

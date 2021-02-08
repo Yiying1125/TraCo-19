@@ -48,7 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:layout_alignParentTop="true"
-                android:background="@color/colorPrimary">
+                android:background="?colorPrimary">
 
                 <ImageView
                     android:layout_width="40dp"
@@ -199,7 +199,7 @@
         android:layout_below="@+id/toolbar"
         android:layout_marginStart="?attr/actionBarSize"
         android:layout_marginLeft="?attr/actionBarSize"
-        android:background="@color/colorPrimary"
+        android:background="?colorPrimary"
         android:elevation="10dp"
         tools:targetApi="lollipop">
 

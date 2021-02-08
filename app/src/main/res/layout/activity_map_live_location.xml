@@ -101,7 +101,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="25dp"
                     android:layout_marginRight="19dp"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="?colorPrimaryDark"
                     android:textSize="12sp"
                     android:textStyle="bold" />
 
@@ -112,7 +112,7 @@
                     android:layout_height="25dp"
                     android:layout_weight="1"
                     android:alpha="0.6"
-                    android:textColor="@color/colorPrimaryDark"
+                    android:textColor="?colorPrimaryDark"
                     android:textSize="12sp" />
             </LinearLayout>
         </LinearLayout>
@@ -137,7 +137,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text="Last seen : "
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="?colorPrimaryDark"
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
@@ -149,7 +149,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginLeft="5dp"
                 android:gravity="center"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="?colorPrimaryDark"
                 android:textSize="10sp" />
 
             <TextView
@@ -160,7 +160,7 @@
                 android:layout_marginLeft="17dp"
                 android:gravity="center"
                 android:text="Status : "
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="?colorPrimaryDark"
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
@@ -172,7 +172,7 @@
                 android:layout_marginStart="5dp"
                 android:layout_marginLeft="5dp"
                 android:gravity="center"
-                android:textColor="@color/colorPrimaryDark"
+                android:textColor="?colorPrimaryDark"
                 android:textSize="10sp" />
 
             <Space
