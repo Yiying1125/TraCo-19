@@ -5,13 +5,16 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+
 import android.content.SharedPreferences;
+
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -22,8 +25,10 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
+
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -36,6 +41,7 @@ import java.text.NumberFormat;
 import static mmu.edu.my.traco_19.Activities.Register.SHARED_PREFS;
 
 public class LatestUpdateActivity extends AppCompatActivity {
+
 
     Context context = this;
     private TextView tv_totalnumber1, tv_activenumber1, tv_activenumberNew, tv_deathnumber1, tv_deathnumberNew, tv_recoverednumber1, tv_recoverednumberNew, tv_todaynumber1;
@@ -66,11 +72,13 @@ public class LatestUpdateActivity extends AppCompatActivity {
         setTheme(style);
     }
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTHeme(getInt(loadData("Theme")));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.latest_update);
+
 
         Init();
         //Fetch data from API
@@ -139,7 +147,9 @@ public class LatestUpdateActivity extends AppCompatActivity {
         ShowDialog();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         String apiUrl = "https://api.apify.com/v2/datasets/7Fdb90FMDLZir2ROo/items?format=json&clean=1";
+
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
+
                 Request.Method.GET,
                 apiUrl,
                 null,
@@ -211,6 +221,8 @@ public class LatestUpdateActivity extends AppCompatActivity {
                 }
 
         );
+
+
 
         jsonArrayRequest.setRetryPolicy(new DefaultRetryPolicy(
                 10000,
@@ -310,6 +322,7 @@ public class LatestUpdateActivity extends AppCompatActivity {
         } catch (Exception ignored) {
             return 0;
         }
+
     }
 
     public String loadData(String name) {
@@ -320,8 +333,10 @@ public class LatestUpdateActivity extends AppCompatActivity {
         return sharedPreferences.getString(name, "");
     }
 
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
     }
+
 }
