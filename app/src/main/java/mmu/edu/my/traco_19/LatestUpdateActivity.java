@@ -8,21 +8,28 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkError;
 import com.android.volley.ParseError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
 import com.android.volley.ServerError;
 import com.android.volley.TimeoutError;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.text.NumberFormat;
 
@@ -34,6 +41,7 @@ public class LatestUpdateActivity extends AppCompatActivity {
     private TextView tv_totalnumber1, tv_activenumber1, tv_activenumberNew, tv_deathnumber1, tv_deathnumberNew, tv_recoverednumber1, tv_recoverednumberNew, tv_todaynumber1;
     private SwipeRefreshLayout swipeRefreshLayout;
     ProgressDialog progressDialog;
+    private int int_today, NewActive,NewDeath,NewRecovered;
 
     public void back(View view) {
         onBackPressed();
@@ -74,57 +82,141 @@ public class LatestUpdateActivity extends AppCompatActivity {
     }
 
     private void FetchData() {
+//        ShowDialog();
+//        RequestQueue requestQueue = Volley.newRequestQueue(this);
+//        String apiUrl = "https://api.apify.com/v2/datasets/7Fdb90FMDLZir2ROo/items?format=json&clean=1";
+//        String lastData = "https://api.apify.com/v2/key-value-stores/6t65lJVfs3d8s6aKc/records/LATEST?disableRedirect=true";
+//
+//
+//        JsonArrayRequest jsonObjectRequest = new JsonArrayRequest(
+//                Request.Method.GET,
+//                lastData,
+//                null,
+//                response -> {
+//                    try {
+//                        JSONObject result = response.getJSONObject(response.length() - 1);
+//                        JSONObject result2 = response.getJSONObject(response.length() - 2);
+//                        str_total = result.getString("testedPositive");
+//                        str_active = result.getString("activeCases");
+//                        str_death = result.getString("deceased");
+//                        str_recovered = result.getString("recovered");
+//                        str_yesterday=result2.getString("testedPositive");
+//
+//
+//                        String str_total = response.getString("testedPositive");
+//                        String str_active = response.getString("activeCases");
+//                        String str_death = response.getString("deceased");
+//                        String str_recovered = response.getString("recovered");
+//
+//                        Handler delayToShowProgress = new Handler();
+//                        delayToShowProgress.postDelayed(() -> {
+//                            //Setting text in the textview
+//                            tv_totalnumber1.setText(NumberFormat.getInstance().format(Integer.parseInt(str_total)));
+//                            tv_activenumber1.setText(NumberFormat.getInstance().format(Integer.parseInt(str_active)));
+//                            tv_recoverednumber1.setText(NumberFormat.getInstance().format(Integer.parseInt(str_recovered)));
+//                            tv_deathnumber1.setText(NumberFormat.getInstance().format(Integer.parseInt(str_death)));
+//                            /*int_today = Integer.parseInt(str_total)
+//                                    - (Integer.parseInt(str_total) + Integer.parseInt(str_death));*/
+////                                    tv_todaynumber1.setText(NumberFormat.getInstance().format(int_today));
+//                            progressDialog.dismiss();
+//                        }, 1000);
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                        progressDialog.dismiss();
+//                    }
+//                },
+//                error -> {
+//
+//                }
+//        );
+//
+//        jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(
+//                60000,
+//                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+//                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+//        requestQueue.add(jsonObjectRequest);
+
         ShowDialog();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         String apiUrl = "https://api.apify.com/v2/datasets/7Fdb90FMDLZir2ROo/items?format=json&clean=1";
-        String lastData = "https://api.apify.com/v2/key-value-stores/6t65lJVfs3d8s6aKc/records/LATEST?disableRedirect=true";
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(
                 Request.Method.GET,
                 apiUrl,
                 null,
                 response -> {
+
                     try {
-                        String str_total = response.getString("testedPositive");
-                        String str_active = response.getString("activeCases");
-                        String str_death = response.getString("deceased");
-                        String str_recovered = response.getString("recovered");
+                        JSONObject result = response.getJSONObject(response.length() - 1);
+                        JSONObject result2 = response.getJSONObject(response.length() - 3);
+
+                        String str_total_today = result.getString("testedPositive");
+                        String str_active_today = result.getString("activeCases");
+                        String str_death_today = result.getString("deceased");
+                        String str_recovered_today = result.getString("recovered");
+
+                        String str_total_yesterday = result2.getString("testedPositive");
+                        String str_active_yesterday = result2.getString("activeCases");
+                        String str_death_yesterday = result2.getString("deceased");
+                        String str_recovered_yesterday = result2.getString("recovered");
+
+                        NewActive = getInt(str_active_today) - getInt(str_active_yesterday);
+                        NewDeath = getInt(str_death_today) - getInt(str_death_yesterday);
+                        NewRecovered = getInt(str_recovered_today) - getInt(str_recovered_yesterday);
+                        int_today = getInt(str_total_today) - getInt(str_total_yesterday);
 
                         Handler delayToShowProgress = new Handler();
-                        delayToShowProgress.postDelayed(() -> {
-                            //Setting text in the textview
-                            tv_totalnumber1.setText(NumberFormat.getInstance().format(Integer.parseInt(str_total)));
-                            tv_activenumber1.setText(NumberFormat.getInstance().format(Integer.parseInt(str_active)));
-                            tv_recoverednumber1.setText(NumberFormat.getInstance().format(Integer.parseInt(str_recovered)));
-                            tv_deathnumber1.setText(NumberFormat.getInstance().format(Integer.parseInt(str_death)));
-                            /*int_today = Integer.parseInt(str_total)
-                                    - (Integer.parseInt(str_total) + Integer.parseInt(str_death));*/
-//                                    tv_todaynumber1.setText(NumberFormat.getInstance().format(int_today));
-                            progressDialog.dismiss();
-                        }, 1000);
+                        delayToShowProgress.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                //Setting text in the textview
+                                tv_totalnumber1.setText(NumberFormat.getInstance().format(Integer.parseInt(str_total_today)));
+
+                                tv_activenumber1.setText(NumberFormat.getInstance().format(Integer.parseInt(str_active_today)));
+                                tv_activenumberNew.setText("+ " + NumberFormat.getInstance().format(NewActive));
+
+                                tv_recoverednumber1.setText(NumberFormat.getInstance().format(Integer.parseInt(str_recovered_today)));
+                                tv_recoverednumberNew.setText("+ " + NumberFormat.getInstance().format(NewRecovered));
+
+                                tv_deathnumber1.setText(NumberFormat.getInstance().format(Integer.parseInt(str_death_today)));
+                                tv_deathnumberNew.setText("+ " + NumberFormat.getInstance().format(NewDeath));
+
+                                tv_todaynumber1.setText(NumberFormat.getInstance().format(int_today));
+                                progressDialog.dismiss();
+                            }
+                        }, 500);
                     } catch (JSONException e) {
                         e.printStackTrace();
-                        progressDialog.dismiss();
                     }
                 },
-                error -> {
-                    error.printStackTrace();
-                    String message = "";
-                    if (error instanceof NetworkError) {
-                        message = "Cannot connect to Internet...Please check your connection!";
-                    } else if (error instanceof ServerError) {
-                        message = "The server could not be found. Please try again after some time!!";
-                    } else if (error instanceof AuthFailureError) {
-                        message = "error connect to Internet...Please check your connection!";
-                    } else if (error instanceof ParseError) {
-                        message = "Parsing error! Please try again after some time!!";
-                    } else if (error instanceof TimeoutError) {
-                        message = "Connection TimeOut! Please check your internet connection.";
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+                        String message = "";
+                        if (error instanceof NetworkError) {
+                            message = "Cannot connect to Internet...Please check your connection!";
+                        } else if (error instanceof ServerError) {
+                            message = "The server could not be found. Please try again after some time!!";
+                        } else if (error instanceof AuthFailureError) {
+                            message = "error connect to Internet...Please check your connection!";
+                        } else if (error instanceof ParseError) {
+                            message = "Parsing error! Please try again after some time!!";
+                        } else if (error instanceof TimeoutError) {
+                            message = "Connection TimeOut! Please check your internet connection.";
+                        }
+                        Log.d("TAGGG: ", error.getMessage());
+                        Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+                        progressDialog.dismiss();
                     }
-                    Toast.makeText(context, message, Toast.LENGTH_LONG).show();
-                    progressDialog.dismiss();
                 }
+
         );
-        requestQueue.add(jsonObjectRequest);
+
+        jsonArrayRequest.setRetryPolicy(new DefaultRetryPolicy(
+                10000,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        requestQueue.add(jsonArrayRequest);
     }
 
 
