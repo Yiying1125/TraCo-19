@@ -1,6 +1,5 @@
 package mmu.edu.my.traco_19;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
@@ -9,34 +8,34 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkError;
+import com.android.volley.ParseError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
+import com.android.volley.ServerError;
+import com.android.volley.TimeoutError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.text.NumberFormat;
-import java.util.Objects;
 
 import static mmu.edu.my.traco_19.Activities.Register.SHARED_PREFS;
 
 public class LatestUpdateActivity extends AppCompatActivity {
-    private TextView tv_totalnumber1, tv_activenumber1, tv_deathnumber1, tv_recoverednumber1, tv_todaynumber1;
-    private String str_total, str_active, str_death, str_recovered, str_today, str_tadaycal;
-    private SwipeRefreshLayout swipeRefreshLayout;
-    private int int_today;
-    private ProgressDialog progressDialog;
-    private String appUrl;
 
-    public void back(View view){
+    Context context = this;
+    private TextView tv_totalnumber1, tv_activenumber1, tv_activenumberNew, tv_deathnumber1, tv_deathnumberNew, tv_recoverednumber1, tv_recoverednumberNew, tv_todaynumber1;
+    private SwipeRefreshLayout swipeRefreshLayout;
+    ProgressDialog progressDialog;
+
+    public void back(View view) {
         onBackPressed();
     }
 
@@ -59,86 +58,153 @@ public class LatestUpdateActivity extends AppCompatActivity {
         setTheme(style);
     }
 
-    public int getInt(String str) {
-        try {
-            return Integer.parseInt(str);
-        } catch (Exception ignored) {
-            return 0;
-        }
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTHeme(getInt(loadData("Theme")));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.latest_update);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        getSupportActionBar().setDisplayShowHomeEnabled(true);
-//
-//        getSupportActionBar().setTitle("TraCo-19 (Latest Update)");
-        //initialise
+
         Init();
         //Fetch data from API
         FetchData();
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                FetchData();
-                swipeRefreshLayout.setRefreshing(false);
-            }
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            FetchData();
+            swipeRefreshLayout.setRefreshing(false);
         });
     }
 
     private void FetchData() {
-        //show progress dialog
-        ShowDialog(this);
+        ShowDialog();
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-        String apiUrl = "https://api.apify.com/v2/key-value-stores/6t65lJVfs3d8s6aKc/records/LATEST?disableRedirect=true";
+        String apiUrl = "https://api.apify.com/v2/datasets/7Fdb90FMDLZir2ROo/items?format=json&clean=1";
+        String lastData = "https://api.apify.com/v2/key-value-stores/6t65lJVfs3d8s6aKc/records/LATEST?disableRedirect=true";
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.GET,
                 apiUrl,
                 null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            str_total = response.getString("testedPositive");
-                            str_active = response.getString("activeCases");
-                            str_death = response.getString("deceased");
-                            str_recovered = response.getString("recovered");
+                response -> {
+                    try {
+                        String str_total = response.getString("testedPositive");
+                        String str_active = response.getString("activeCases");
+                        String str_death = response.getString("deceased");
+                        String str_recovered = response.getString("recovered");
 
-                            Handler delayToShowProgress = new Handler();
-                            delayToShowProgress.postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                    //Setting text in the textview
-                                    tv_totalnumber1.setText(NumberFormat.getInstance().format(Integer.parseInt(str_total)));
-                                    tv_activenumber1.setText(NumberFormat.getInstance().format(Integer.parseInt(str_active)));
-                                    tv_recoverednumber1.setText(NumberFormat.getInstance().format(Integer.parseInt(str_recovered)));
-                                    tv_deathnumber1.setText(NumberFormat.getInstance().format(Integer.parseInt(str_death)));
-                                    /*int_today = Integer.parseInt(str_total)
-                                            - (Integer.parseInt(str_total) + Integer.parseInt(str_death));*/
-                                    tv_todaynumber1.setText(NumberFormat.getInstance().format(int_today));
-                                    dismissDialog();
-                                }
-                            }, 1000);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
+                        Handler delayToShowProgress = new Handler();
+                        delayToShowProgress.postDelayed(() -> {
+                            //Setting text in the textview
+                            tv_totalnumber1.setText(NumberFormat.getInstance().format(Integer.parseInt(str_total)));
+                            tv_activenumber1.setText(NumberFormat.getInstance().format(Integer.parseInt(str_active)));
+                            tv_recoverednumber1.setText(NumberFormat.getInstance().format(Integer.parseInt(str_recovered)));
+                            tv_deathnumber1.setText(NumberFormat.getInstance().format(Integer.parseInt(str_death)));
+                            /*int_today = Integer.parseInt(str_total)
+                                    - (Integer.parseInt(str_total) + Integer.parseInt(str_death));*/
+//                                    tv_todaynumber1.setText(NumberFormat.getInstance().format(int_today));
+                            progressDialog.dismiss();
+                        }, 1000);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        progressDialog.dismiss();
                     }
                 },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        error.printStackTrace();
+                error -> {
+                    error.printStackTrace();
+                    String message = "";
+                    if (error instanceof NetworkError) {
+                        message = "Cannot connect to Internet...Please check your connection!";
+                    } else if (error instanceof ServerError) {
+                        message = "The server could not be found. Please try again after some time!!";
+                    } else if (error instanceof AuthFailureError) {
+                        message = "error connect to Internet...Please check your connection!";
+                    } else if (error instanceof ParseError) {
+                        message = "Parsing error! Please try again after some time!!";
+                    } else if (error instanceof TimeoutError) {
+                        message = "Connection TimeOut! Please check your internet connection.";
                     }
+                    Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+                    progressDialog.dismiss();
                 }
         );
         requestQueue.add(jsonObjectRequest);
     }
 
-    public void ShowDialog(Context context) {
-        //setting up progress dialog
+
+//    private void FetchData() {
+//        ShowDialog();
+//        String URL = "https://api.apify.com/v2/datasets/7Fdb90FMDLZir2ROo/items?format=json&clean=1";
+//        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, URL, null, response -> {
+//
+////            try {
+////                // Loop through the array elements
+////                for (int i = 0; i < response.length(); i++) {
+////                    // Get current json object
+////
+////                }
+////
+////                JSONObject student = response.getJSONObject(i);
+//
+//                Handler delayToShowProgress = new Handler();
+//                delayToShowProgress.postDelayed(() -> {
+////                    //Setting text in the textview
+////                    tv_totalnumber1.setText(NumberFormat.getInstance().format(Integer.parseInt(str_total)));
+////                    tv_activenumber1.setText(NumberFormat.getInstance().format(Integer.parseInt(str_active)));
+////                    tv_recoverednumber1.setText(NumberFormat.getInstance().format(Integer.parseInt(str_recovered)));
+////                    tv_deathnumber1.setText(NumberFormat.getInstance().format(Integer.parseInt(str_death)));
+////                                /*int_today = Integer.parseInt(str_total)
+////                                        - (Integer.parseInt(str_total) + Integer.parseInt(str_death));*/
+////                    tv_todaynumber1.setText(NumberFormat.getInstance().format(int_today));
+//
+//                    try {
+//                        tv_totalnumber1.setText(response.getJSONObject(response.length()-1).getString("testedPositive"));
+//                        tv_activenumber1.setText(response.getJSONObject(response.length()-1).getString("testedPositive"));
+//                        tv_activenumberNew.setText(response.getJSONObject(response.length()-1).getString("testedPositive"));
+//                        tv_deathnumber1.setText(response.getJSONObject(response.length()-1).getString("testedPositive"));
+//                        tv_deathnumberNew.setText(response.getJSONObject(response.length()-1).getString("testedPositive"));
+//                        tv_recoverednumber1.setText(response.getJSONObject(response.length()-1).getString("testedPositive"));
+//                        tv_recoverednumberNew.setText(response.getJSONObject(response.length()-1).getString("testedPositive"));
+//                        tv_todaynumber1.setText(response.getJSONObject(response.length()-1).getString("testedPositive"));
+//
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//
+//                    progressDialog.dismiss();
+//                }, 1000);
+//
+//
+////            } catch (JSONException e) {
+////                e.printStackTrace();
+////            }
+//        }, error -> {
+//            String message = "";
+//            if (error instanceof NetworkError) {
+//                message = "Cannot connect to Internet...Please check your connection!";
+//            } else if (error instanceof ServerError) {
+//                message = "The server could not be found. Please try again after some time!!";
+//            } else if (error instanceof AuthFailureError) {
+//                message = "error connect to Internet...Please check your connection!";
+//            } else if (error instanceof ParseError) {
+//                message = "Parsing error! Please try again after some time!!";
+//            } else if (error instanceof TimeoutError) {
+//                message = "Connection TimeOut! Please check your internet connection.";
+//            }
+//            Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+//        });
+//        Volley.newRequestQueue(context).add(jsonArrayRequest);
+//    }
+
+    private void Init() {
+        tv_totalnumber1 = findViewById(R.id.totalnumber2);
+        tv_activenumber1 = findViewById(R.id.activenumber2);
+        tv_activenumberNew = findViewById(R.id.activenumberNew);
+        tv_deathnumber1 = findViewById(R.id.deathnumber2);
+        tv_deathnumberNew = findViewById(R.id.deathnumberNew);
+        tv_recoverednumber1 = findViewById(R.id.recoverednumber2);
+        tv_recoverednumberNew = findViewById(R.id.recoverednumberNew);
+        tv_todaynumber1 = findViewById(R.id.todaynumber2);
+        swipeRefreshLayout = findViewById(R.id.swipe_refresh_layout);
+    }
+
+    public void ShowDialog() {
         progressDialog = new ProgressDialog(this);
         progressDialog.show();
         progressDialog.setContentView(R.layout.progress_dialog);
@@ -146,25 +212,12 @@ public class LatestUpdateActivity extends AppCompatActivity {
         progressDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
     }
 
-    public void dismissDialog() {
-        progressDialog.dismiss();
-    }
-
-    private void Init() {
-        tv_totalnumber1 = findViewById(R.id.totalnumber2);
-        tv_activenumber1 = findViewById(R.id.activenumber2);
-        tv_deathnumber1 = findViewById(R.id.deathnumber2);
-        tv_recoverednumber1 = findViewById(R.id.recoverednumber2);
-        tv_todaynumber1 = findViewById(R.id.todaynumber2);
-        swipeRefreshLayout = findViewById(R.id.swipe_refresh_layout);
-
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == android.R.id.home)
-            finish();
-        return super.onOptionsItemSelected(item);
+    public int getInt(String str) {
+        try {
+            return Integer.parseInt(str);
+        } catch (Exception ignored) {
+            return 0;
+        }
     }
 
     public String loadData(String name) {

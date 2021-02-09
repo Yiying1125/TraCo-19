@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LatestUpdateActivity">
+
     <FrameLayout
         android:id="@+id/toolbar"
         style="@style/Base_ToolbarStyle"
@@ -14,6 +15,7 @@
         android:elevation="20dp"
         android:orientation="horizontal"
         tools:targetApi="lollipop">
+
         <FrameLayout
             android:layout_width="?attr/actionBarSize"
             android:layout_height="?attr/actionBarSize">
@@ -42,9 +44,9 @@
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh_layout"
-        android:layout_below="@id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
         android:background="@color/purple">
 
         <androidx.core.widget.NestedScrollView
@@ -169,7 +171,7 @@
                             android:gravity="center"
                             android:text=""
                             android:textColor="@color/white"
-                            android:textSize="24dp"
+                            android:textSize="24sp"
                             android:textStyle="bold" />
                     </androidx.cardview.widget.CardView>
 
@@ -183,19 +185,47 @@
                         android:layout_marginTop="4dp"
                         android:layout_marginEnd="10dp"
                         android:layout_marginRight="10dp"
+                        android:backgroundTint="@color/yellow"
                         app:cardCornerRadius="20dp"
                         app:cardElevation="4dp">
 
-                        <TextView
-                            android:id="@+id/activenumber2"
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@color/yellow"
-                            android:gravity="center"
-                            android:text=""
-                            android:textColor="@color/white"
-                            android:textSize="24dp"
-                            android:textStyle="bold" />
+                            android:orientation="vertical">
+
+                            <Space
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="1" />
+
+                            <TextView
+                                android:id="@+id/activenumber2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text=""
+                                android:textColor="@color/white"
+                                android:textSize="24sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/activenumberNew"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:background="@color/yellow"
+                                android:gravity="center"
+                                android:text=""
+                                android:textColor="@color/white"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <Space
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="1" />
+                        </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
@@ -206,19 +236,47 @@
                         android:layout_marginTop="4dp"
                         android:layout_marginEnd="20dp"
                         android:layout_marginRight="20dp"
+                        android:backgroundTint="@color/bright_red"
                         app:cardCornerRadius="20dp"
                         app:cardElevation="4dp">
 
-                        <TextView
-                            android:id="@+id/deathnumber2"
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@color/bright_red"
-                            android:gravity="center"
-                            android:text=""
-                            android:textColor="@color/white"
-                            android:textSize="24dp"
-                            android:textStyle="bold" />
+                            android:orientation="vertical">
+
+                            <Space
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="1" />
+
+                            <TextView
+                                android:id="@+id/deathnumber2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text=""
+                                android:textColor="@color/white"
+                                android:textSize="24sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/deathnumberNew"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:background="@color/yellow"
+                                android:gravity="center"
+                                android:text=""
+                                android:textColor="@color/white"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <Space
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="1" />
+                        </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
                 </GridLayout>
@@ -284,6 +342,7 @@
                         android:layout_height="wrap_content"
                         android:layout_rowWeight="1"
                         android:layout_columnWeight="1"
+                        android:backgroundTint="@color/green"
                         android:layout_marginStart="55dp"
                         android:layout_marginLeft="55dp"
                         android:layout_marginTop="10dp"
@@ -292,16 +351,45 @@
                         app:cardCornerRadius="20dp"
                         app:cardElevation="4dp">
 
-                        <TextView
-                            android:id="@+id/recoverednumber2"
+
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@color/green"
-                            android:gravity="center"
-                            android:text=""
-                            android:textColor="@color/white"
-                            android:textSize="24dp"
-                            android:textStyle="bold" />
+                            android:orientation="vertical">
+
+                            <Space
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="1" />
+
+                            <TextView
+                                android:id="@+id/recoverednumber2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text=""
+                                android:textColor="@color/white"
+                                android:textSize="24sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/recoverednumberNew"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:background="@color/yellow"
+                                android:gravity="center"
+                                android:text=""
+                                android:textColor="@color/white"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <Space
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="1" />
+                        </LinearLayout>
+
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
