@@ -10,13 +10,13 @@
     <item android:state_focused="true">
         <shape android:shape="oval">
             <corners android:radius="3dp" />
-            <solid android:color="@color/colorPrimaryDark" />
+            <solid android:color="?colorPrimaryDark" />
         </shape>
     </item>
     <item>
         <shape android:shape="oval">
             <corners android:radius="3dp" />
-            <solid android:color="@color/colorPrimaryDark" />
+            <solid android:color="?colorPrimaryDark" />
         </shape>
     </item>
 

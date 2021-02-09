@@ -3,22 +3,30 @@ package mmu.edu.my.traco_19.Activities;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.ViewPropertyAnimatorCompat;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.TranslateAnimation;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,12 +51,12 @@ import mmu.edu.my.traco_19.R;
 public class Register extends AppCompatActivity {
 
     //views
-    LinearLayout linearLayout, forLogin;
-    TextView enterTitle, forgotText;
+    LinearLayout linearLayout, forLogin, Container;
+    TextView enterTitle, forgotText, RegistrationTitle;
     EditText nameE, emailE, passE, confirmPassE, focused;
     FrameLayout name, email, pass, confirmPass, forReg;
     ScrollView scrollView;
-    ImageView backGround;
+    ImageView backGround, logoImg;
     ProgressBar progressBar;
 
     //vars
@@ -57,6 +65,16 @@ public class Register extends AppCompatActivity {
     FirebaseFirestore fStore;
     DocumentReference noteRef;
     Context context = this;
+
+    public static final int STARTUP_DELAY = 300;
+    public static final int ANIM_ITEM_DURATION = 1000;
+    public static final int EDITTEXT_DELAY = 300;
+    public static final int BUTTON_DELAY = 300;
+    public static final int VIEW_DELAY = 400;
+
+    int background = R.drawable.background;
+    int logo = R.drawable.logo;
+
     String userID = "";
     //    String AdminName = "", AdminPassword = "";
     long maxId = 1;
@@ -215,7 +233,6 @@ public class Register extends AppCompatActivity {
             forReg.setVisibility(View.GONE);
             forLogin.setVisibility(View.VISIBLE);
             register = false;
-
         } else {
             name.setVisibility(View.VISIBLE);
             confirmPass.setVisibility(View.VISIBLE);
@@ -245,15 +262,57 @@ public class Register extends AppCompatActivity {
         }
     }
 
+
+    public void setTHeme(int pos) {
+        int style = R.style.Theme_TraCo19;
+
+        if (pos == 1) {
+            style = R.style.Theme_TraCo191;
+            background = R.drawable.background1;
+            logo = R.drawable.logo1;
+        } else if (pos == 2) {
+            style = R.style.Theme_TraCo192;
+            background = R.drawable.background2;
+            logo = R.drawable.logo2;
+        } else if (pos == 3) {
+            style = R.style.Theme_TraCo193;
+            background = R.drawable.background3;
+            logo = R.drawable.logo3;
+        } else if (pos == 4) {
+            style = R.style.Theme_TraCo194;
+            background = R.drawable.background4;
+            logo = R.drawable.logo4;
+        } else if (pos == 5) {
+            style = R.style.Theme_TraCo195;
+            background = R.drawable.background5;
+            logo = R.drawable.logo5;
+        } else if (pos == 6) {
+            style = R.style.Theme_TraCo196;
+            background = R.drawable.background6;
+            logo = R.drawable.logo6;
+        }
+
+        setTheme(style);
+    }
+
+    public int getInt(String str) {
+        try {
+            return Integer.parseInt(str);
+        } catch (Exception ignored) {
+            return 0;
+        }
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.Q)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTHeme(getInt(loadData("Theme")));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
 //        boolean permissions = checkPermissions();
-
         iniFunc();
+        animationFunc();
 
 //        if (permissions) {
 //        if (!loadData("log").isEmpty()) {
@@ -291,7 +350,12 @@ public class Register extends AppCompatActivity {
 
     @SuppressLint("ClickableViewAccessibility")
     public void iniFunc() {
+        RegistrationTitle = findViewById(R.id.RegistrationTitle);
+        logoImg = findViewById(R.id.logoImg);
+        logoImg.setBackgroundResource(logo);
+        Container = findViewById(R.id.Container);
         backGround = findViewById(R.id.backGround);
+        backGround.setBackgroundResource(background);
         scrollView = findViewById(R.id.scrole);
         forLogin = findViewById(R.id.forLoginTitle);
         forReg = findViewById(R.id.forRegisTiltle);
@@ -351,79 +415,60 @@ public class Register extends AppCompatActivity {
 
             }
         });
-//        FirebaseDatabase.getInstance().getReference().child("adminInfo").addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                if (dataSnapshot.child("adminName").exists() && dataSnapshot.child("adminPass").exists()) {
-//                    AdminName = Objects.requireNonNull(dataSnapshot.child("adminName").getValue()).toString();
-//                    AdminPassword = Objects.requireNonNull(dataSnapshot.child("adminPass").getValue()).toString();
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//            }
-//        });
     }
 
-//    @SuppressLint("BatteryLife")
-//    public void checkBackgroundPermission() {
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//            String packageName = context.getPackageName();
-//            PowerManager pm = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
-//            if (pm != null && !pm.isIgnoringBatteryOptimizations(packageName)) {
-//                Intent intent = new Intent();
-//                intent.setAction(android.provider.Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS);
-//                intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
-//                intent.setData(Uri.parse("package:" + packageName));
-//                context.startActivity(intent);
-//            }
-//        }
-//    }
+    public void animationFunc() {
+        logoImg.post(() -> {
+            Animation animation2 = new TranslateAnimation(0, 0, logoImg.getHeight(), 0);
+            animation2.setStartTime(STARTUP_DELAY);
+            animation2.setDuration(ANIM_ITEM_DURATION);
+            animation2.setInterpolator(new DecelerateInterpolator(1.2f));
+            animation2.setFillAfter(true);
+            logoImg.startAnimation(animation2);
+        });
+        RegistrationTitle.post(() -> {
+            Animation animation2 = new TranslateAnimation(0, 0, -RegistrationTitle.getHeight(), 0);
+            animation2.setStartTime(STARTUP_DELAY);
+            animation2.setDuration(ANIM_ITEM_DURATION);
+            animation2.setInterpolator(new DecelerateInterpolator(1.2f));
+            animation2.setFillAfter(true);
+            RegistrationTitle.startAnimation(animation2);
+        });
 
-//    @RequiresApi(api = Build.VERSION_CODES.Q)
-//    private boolean checkPermissions() {
-//        return ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
-//                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
-//                ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_BACKGROUND_LOCATION) == PackageManager.PERMISSION_GRANTED;
-//    }
+        for (int i = 0; i < Container.getChildCount(); i++) {
+            View v = Container.getChildAt(i);
+            ViewPropertyAnimatorCompat viewAnimator;
 
-//    private void requestPermissions() {
-//        if (Build.VERSION.SDK_INT >= 29) {
-//
-//            ActivityCompat.requestPermissions(
-//                    this,
-//                    new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_BACKGROUND_LOCATION},
-//                    PERMISSION_ID
-//            );
-//        } else {
-//            ActivityCompat.requestPermissions(
-//                    this,
-//                    new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION},
-//                    PERMISSION_ID
-//            );
-//        }
-//    }
-//
-//    @Override
-//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-//        if (requestCode == PERMISSION_ID) {
-//            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-//                Toast.makeText(context, "Permission accepted", Toast.LENGTH_SHORT).show();
-//                checkBackgroundPermission();
-//                if (fAuth.getCurrentUser() != null) {
-//                    startActivity(new Intent(getApplicationContext(), UserDashboard.class));
-//                    finish();
-//                }
-//            } else {
-//                finish();
-//            }
-//        } else {
-//            finish();
-//        }
-//    }
+            if (v instanceof FrameLayout) {
+                viewAnimator = ViewCompat.animate(v)
+                        .scaleY(1).scaleX(1)
+                        .setStartDelay((EDITTEXT_DELAY * i) + 500)
+                        .setDuration(500);
+            } else if (v instanceof RelativeLayout) {
+                viewAnimator = ViewCompat.animate(v)
+                        .scaleY(1).scaleX(1)
+                        .setStartDelay((BUTTON_DELAY * i) + 500)
+                        .setDuration(500);
+            } else {
+                viewAnimator = ViewCompat.animate(v)
+                        .translationY(50).alpha(1)
+                        .setStartDelay((VIEW_DELAY * i) + 500)
+                        .setDuration(1000);
+            }
 
+            viewAnimator.setInterpolator(new DecelerateInterpolator()).start();
+        }
+
+
+    }
+
+    public String loadData(String name) {
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        if (sharedPreferences == null) {
+            return "";
+        }
+        return sharedPreferences.getString(name, "");
+    }
 
     public void saveData(String data, String name) {
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
@@ -453,6 +498,16 @@ public class Register extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    public int dpToPx(int dip) {
+        Resources r = getResources();
+        float px = TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP,
+                dip,
+                r.getDisplayMetrics()
+        );
+        return (int) px;
     }
 
     @Override

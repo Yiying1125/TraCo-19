@@ -96,7 +96,7 @@
     <!-- Background -->
     <item>
         <shape>
-            <solid android:color="@color/colorPrimary" />
+            <solid android:color="?colorPrimary" />
 
             <corners
                 android:radius="3dp"
