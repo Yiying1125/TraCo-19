@@ -51,7 +51,6 @@ public class LocationService extends Service {
     long FASTEST_INTERVAL = 500000;
     public static final String SHARED_PREFS = "sharedPrefs";
 
-
     @Override
     public void onCreate() {
         super.onCreate();
